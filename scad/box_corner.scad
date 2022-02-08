@@ -1,7 +1,7 @@
 use <box_edge.scad>
 
 $fn = 100;
-thread_insert_radius = 2.75;
+thread_insert_radius = 2.25;
 thread_insert_height = 5;
 
 module _corner(radius) {
