@@ -52,7 +52,3 @@ module box_corner(radius = 15, wall_thickness = 3) {
 }
 
 box_corner();
-
-// translate([-radius-3, 0, radius])
-// rotate([90, 270, 270])
-// box_edge();
