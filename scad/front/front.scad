@@ -1,4 +1,4 @@
-use <./../rounded_cube.scad>;
+use <./../panel.scad>;
 use <./display.scad>;
 use <./speaker.scad>;
 
@@ -8,7 +8,7 @@ wall_thickness = 3;
 
 difference() {
     translate([-82, -44, 0])
-    rounded_cube(size = [164, 120, wall_thickness], radius = 15);
+    panel(size = [164, 120, wall_thickness], radius = 15);
 
     translate([0, 52, -1])
     hull()
