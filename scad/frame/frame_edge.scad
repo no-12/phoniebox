@@ -1,6 +1,12 @@
+use <frame_connector.scad>
 $fn = 100;
 
-module box_edge(radius = 15, size = 50, wall_thickness = 3, wall_bearing_surface = 3) {
+radius = 15;
+size = 134;
+wall_thickness = 3;
+wall_bearing_surface = 3;
+
+module frame_edge(radius, size, wall_thickness, wall_bearing_surface) {
     difference() {
         cylinder(r=radius, h=size);
         translate([-radius, -radius, -1]) cube([2*radius, radius, size+2]);
@@ -12,7 +18,17 @@ module box_edge(radius = 15, size = 50, wall_thickness = 3, wall_bearing_surface
     translate([-wall_thickness, -wall_thickness, 0])
     cube([radius-wall_thickness+wall_bearing_surface, wall_bearing_surface, size]);
 
-    translate([radius/4, radius/4, -radius/3]) cube([radius/3,radius/3,radius*2/3+size]);
+    translate([0, 0, -(radius-1)])
+    frame_connector(
+        radius = radius,
+        length = size + 2*(radius-1),
+        connector_margin = wall_thickness/1.4
+    );
 }
 
-box_edge();
+frame_edge(
+    radius = radius,
+    size = size,
+    wall_thickness = wall_thickness,
+    wall_bearing_surface = wall_bearing_surface
+);
