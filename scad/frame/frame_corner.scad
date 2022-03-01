@@ -15,18 +15,18 @@ module _corner(radius) {
     }
 }
 
-module _edge(radius, connector_margin) {
+module _edge(radius, connector = false) {
     difference() {
         cylinder(r=radius, h=radius);
         translate([-radius, -radius, -1]) cube([2*radius, radius, radius+2]);
         translate([-radius, -1, -1]) cube([radius, radius+2, radius+2]);
 
-        if (connector_margin) {
+        if (connector) {
             translate([0, 0, -1])
             frame_connector(
                 radius = radius,
                 length = radius+1,
-                connector_margin = connector_margin
+                wall_thickness = wall_thickness
             );
         }
     }
@@ -50,7 +50,7 @@ module frame_corner(radius, wall_thickness, thread_insert_radius, thread_insert_
     translate([0, 0, radius])
     _corner(radius);
 
-    _edge(radius, wall_thickness/1.5);
+    _edge(radius, connector = true);
     rotate([90, 0, 90])  translate([0, radius, -radius]) _edge(radius);
     mirror([0,0,1]) rotate([270, 0, 0]) translate([0, radius, -radius]) _edge(radius);
 

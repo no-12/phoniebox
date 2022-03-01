@@ -22,7 +22,7 @@ module frame_edge(radius, size, wall_thickness, wall_bearing_surface) {
     frame_connector(
         radius = radius,
         length = size + 2*(radius-1),
-        connector_margin = wall_thickness/1.4
+        wall_thickness = wall_thickness + 0.1
     );
 }
 
