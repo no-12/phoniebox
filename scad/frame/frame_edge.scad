@@ -18,11 +18,11 @@ module frame_edge(radius, size, wall_thickness, wall_bearing_surface) {
     translate([-wall_thickness, -wall_thickness, 0])
     cube([radius-wall_thickness+wall_bearing_surface, wall_bearing_surface, size]);
 
-    translate([0, 0, -(radius-1)])
+    translate([0.2, 0.2, -(radius-1)])
     frame_connector(
         radius = radius,
         length = size + 2*(radius-1),
-        wall_thickness = wall_thickness + 0.1
+        wall_thickness = wall_thickness + 0.2
     );
 }
 
