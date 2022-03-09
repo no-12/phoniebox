@@ -1,14 +1,11 @@
-use <./../panel.scad>;
-use <./display.scad>;
-use <./speaker.scad>;
-
-$fn = 100;
-
-wall_thickness = 3;
+include <parameter.scad>;
+use <lib/panel.scad>;
+use <lib/display.scad>;
+use <lib/speaker.scad>;
 
 difference() {
     translate([-82, -44, 0])
-    panel(size = [164, 120, wall_thickness], radius = 15);
+    panel();
 
     translate([0, 52, -1])
     hull()

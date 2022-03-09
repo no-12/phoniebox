@@ -1,5 +1,5 @@
-include <../parameter.scad>;
-use <frame_corner.scad>
+include <parameter.scad>;
+use <lib/frame_corner.scad>
 use <frame_edge.scad>
 
 module _corner_with_edge() {

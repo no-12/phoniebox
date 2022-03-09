@@ -1,5 +1,5 @@
-include <../parameter.scad>;
-use <frame_connector.scad>
+include <parameter.scad>;
+use <lib/frame_connector.scad>
 
 module frame_edge(radius, size, wall_thickness, wall_bearing_surface) {
     difference() {

@@ -8,3 +8,4 @@ wall_bearing_surface = 3;
 
 ruthex_m3_thread_insert_radius = 2;
 ruthex_m3_thread_insert_height = 6.7;
+m3_screw_diameter = 3;

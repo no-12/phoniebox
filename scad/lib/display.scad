@@ -1,4 +1,4 @@
-use <./../rounded_cube.scad>;
+use <rounded_cube.scad>;
 
 module display() {
     display_base_marign = 2;

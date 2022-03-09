@@ -1,5 +1,3 @@
-include <../parameter.scad>;
-
 module frame_connector(radius, length, wall_thickness) {
     connector_size = radius - 2*wall_thickness;
     difference() {
