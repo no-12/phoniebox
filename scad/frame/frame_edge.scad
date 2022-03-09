@@ -1,10 +1,5 @@
+include <../parameter.scad>;
 use <frame_connector.scad>
-$fn = 100;
-
-radius = 15;
-size = 134;
-wall_thickness = 3;
-wall_bearing_surface = 3;
 
 module frame_edge(radius, size, wall_thickness, wall_bearing_surface) {
     difference() {
@@ -27,8 +22,8 @@ module frame_edge(radius, size, wall_thickness, wall_bearing_surface) {
 }
 
 frame_edge(
-    radius = radius,
-    size = size,
+    radius = corner_radius,
+    size = edge_long_length,
     wall_thickness = wall_thickness,
     wall_bearing_surface = wall_bearing_surface
 );

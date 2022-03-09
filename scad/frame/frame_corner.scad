@@ -1,10 +1,5 @@
+include <../parameter.scad>;
 use <frame_connector.scad>
-$fn = 100;
-
-radius = 15;
-wall_thickness = 3;
-thread_insert_radius = 2;
-thread_insert_height = 6.7;
 
 module _corner(radius) {
     difference() {
@@ -58,10 +53,3 @@ module frame_corner(radius, wall_thickness, thread_insert_radius, thread_insert_
     rotate([270, 0, 0]) translate([-radius, -2*radius, -radius]) _bearing(radius, wall_thickness, thread_insert_radius, thread_insert_height);
     rotate([180, 270, 0]) translate([0, -radius, -radius]) _bearing(radius, wall_thickness, thread_insert_radius, thread_insert_height);
 }
-
-frame_corner(
-    radius = radius,
-    wall_thickness = wall_thickness,
-    thread_insert_radius = thread_insert_radius,
-    thread_insert_height = thread_insert_height
-);
