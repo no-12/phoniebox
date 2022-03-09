@@ -1,0 +1,7 @@
+dtoverlay=hifiberry-dac
+
+dtparam=spi=on
+
+# Disable on-board LEDs
+#dtparam=act_led_trigger=none
+#dtparam=act_led_activelow=on

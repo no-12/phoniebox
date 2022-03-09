@@ -1,0 +1,48 @@
+---
+- hosts: all
+  vars:
+    phoniebox_version: V2.3.0
+  handlers:
+    - name: restart sshd
+      service:
+        name: sshd
+        state: restarted
+  tasks:
+    # TODO auto upgrade
+
+    - name: Ensure config.txt is present
+      become: true
+      ansible.builtin.copy:
+        src: config.txt
+        dest: /boot/config.txt
+        mode: 0755
+
+    - name: Ensure sshd is configured
+      become: true
+      ansible.builtin.lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+        state: present
+      with_items:
+        - regexp: "^#?PermitRootLogin"
+          line: "PermitRootLogin no"
+        - regexp: "^#?PasswordAuthentication"
+          line: "PasswordAuthentication no"
+      notify:
+        - restart sshd
+
+    - name: Ensure packages are updated
+      become: true
+      ansible.builtin.apt:
+        cache_valid_time: 3600
+        force_apt_get: true
+        update_cache: true
+        upgrade: dist
+
+    - name: Ensure phoniebox repo is present
+      ansible.builtin.git:
+        repo: https://github.com/MiczFlor/RPi-Jukebox-RFID
+        dest: "{{ ansible_env.HOME }}/RPi-Jukebox-RFID"
+        depth: 1
+        version: "{{ phoniebox_version }}"
